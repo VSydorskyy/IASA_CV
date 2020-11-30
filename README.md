@@ -15,95 +15,56 @@ Codebase for IASA CV course
 
 5. Run `neural_net_approach.ipynb` and train and evaluate your model
 
-## TODO
+6. Run `ml_approach.ipynb` and train and evaluate your model
 
-- Add explanations
-- Add `requirements.txt`
-- Try XGB, LGB, Catboost, Random Forest, LogRegression, SVM
-- Tweak NN model hyperparams 
+7. Run `Blend.ipynb` and blend predictions
 
 If you liked it, follow me on Kaggle - https://www.kaggle.com/vladimirsydor
 
 # Experiments
 
-## NN baseline
-```python
-model = MultiLayerPerceptron(
-        embedding_sizes_list=[(4,8),(3,6),(3,6),(2,4),(2,4),(2,4)],
-        n_cont_features=len(ordinal_features),
-        linear_config_list=[
-            (64, 0.2, "MISH"),
-            (128, 0.2, "MISH"),
-            (64, 0.2, "MISH"),
-            (1, 0.0, "IDENTITY")
-        ]
-    )
-```
-```
-roc_auc
-OOF : 0.8829903978052127
-Fold scores: fold_n
-0    0.960718
-1    0.931538
-2    0.973380
-3    0.835648
-4    0.887731
-dtype: float64
-Fold mean: 0.9178030303030302
-Fold std: 0.05650849343497842
+Metric - ROC-AUC (5 folds)
 
+## NN 
 
+OOF : 0.9108824874256972
 
-accuracy
-OOF : 0.8215488215488216
-Fold scores: fold_n
-0    0.850000
-1    0.900000
-2    0.796610
-3    0.728814
-4    0.830508
-dtype: float64
-Fold mean: 0.8211864406779661
-Fold std: 0.06376801895393938
-```
+Fold mean: 0.9101220538720538
 
-# NN baseline_3layers
-```python
-model = MultiLayerPerceptron(
-        embedding_sizes_list=[(4,8),(3,6),(3,6),(2,4),(2,4),(2,4)],
-        n_cont_features=len(ordinal_features),
-        linear_config_list=[
-            #(64, 0.2, "MISH"),
-            (128, 0.2, "MISH"),
-            (64, 0.2, "MISH"),
-            (1, 0.0, "IDENTITY")
-        ]
-    )
-```
-```
-roc_auc
-OOF : 0.9102423411065387
-Fold scores: fold_n
-0    0.956229
-1    0.941639
-2    0.938657
-3    0.821759
-4    0.890046
-dtype: float64
-Fold mean: 0.9096661054994388
-Fold std: 0.05509851658418262
+Fold std: 0.05358644090975845
 
+## SVC 
 
+OOF : 0.8790123456790123
 
-accuracy
-OOF : 0.8181818181818182
-Fold scores: fold_n
-0    0.850000
-1    0.900000
-2    0.847458
-3    0.694915
-4    0.796610
-dtype: float64
-Fold mean: 0.8177966101694916
-Fold std: 0.0778185781915186
-```
+Fold mean: 0.8900252525252526
+
+Fold std: 0.036693204775323
+
+## Random Forest 
+
+OOF : 0.9168724279835391
+
+Fold mean: 0.9183291245791245
+
+Fold std: 0.03999131461434162
+
+## Log Reg 
+
+OOF : 0.9047553726566072
+
+Fold mean: 0.9058291245791248
+
+Fold std: 0.037308402973721295
+
+## Random Forest 
+
+OOF : 0.9001828989483311
+
+Fold mean: 0.9019570707070708
+
+Fold std: 0.0504083494837172
+
+## Blend 
+
+OOF : 0.9188385916780978
